@@ -24,10 +24,13 @@ group :development do
     gem 'awesome_print'
     gem 'annotate', ">=2.6.0"
 end
+
 gem 'rails_12factor'
 gem 'active_model_otp'
 gem 'bcrypt'
+
 group :test, :development do
+  gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
