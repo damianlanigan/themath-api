@@ -27,6 +27,7 @@ end
 
 gem 'rails_12factor'
 gem 'active_model_otp'
+gem 'responders'
 gem 'bcrypt'
 
 group :test, :development do
