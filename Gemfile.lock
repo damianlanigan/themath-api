@@ -64,6 +64,8 @@ GEM
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
+    doorkeeper (2.1.0)
+      railties (>= 3.1)
     dotenv (1.0.2)
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
@@ -201,6 +203,7 @@ DEPENDENCIES
   bcrypt
   byebug
   coffee-rails (~> 4.1.0)
+  doorkeeper
   dotenv-rails
   factory_girl_rails
   jbuilder (~> 2.0)

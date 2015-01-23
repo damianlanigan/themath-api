@@ -29,6 +29,7 @@ gem 'rails_12factor'
 gem 'active_model_otp'
 gem 'responders'
 gem 'bcrypt'
+gem 'doorkeeper'
 
 group :test, :development do
   gem 'dotenv-rails'

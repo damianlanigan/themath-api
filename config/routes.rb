@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   get   '/account', to: 'users#edit', as: :user
   patch '/account', to: 'users#update'
   get   '/login', to: 'sessions#new', as: :login
