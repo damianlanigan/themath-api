@@ -5,9 +5,7 @@ module Api
       respond_to :json
 
       protected
-
       # Protected methods
-
     end
   end
 end

@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   get   '/password/reset', to: 'password_reset#show', as: :password_reset
   post  '/password/reset', to: 'password_reset#create'
   get   '/email/confirm/:token', to: 'email_confirmation#show', as: :confirm
-
+  
   root 'welcome#index'
 end
