@@ -19,18 +19,23 @@ Rails.application.routes.draw do
     namespace :v1 do
       post "signup", to: "signup#create"
       get "me", to: "users#me"
+
+
+      #post '/moods' #Adds a new mood for the currently authenicated user.  Includes score, note, image. #Requires User Authenication
+      #delete /moods/:id #Requires User Authenication.  Must own mood
+      #patch '/moods/:id' #Updates an existing mood.  Must own mood
+
+      #TODO - Endpoint to set/save 'user' active categories.
+      #get  '/journal_categories/active' #Gets active mood_categories of the currently authenicated user. - Requires authenication.
+      #post '/journal_categories/:name' #Gets an individual mood category by name 
+      #get  '/journal_categories/base' #Gets 'base categories' - No User authenication
+      #get  '/journal_categories' #Gets all mood categories - No User authenication
+
     end
   end
 
 
   #resource 'moods'
-
-  #post '/moods' #Adds a new mood for the currently authenicated user.  Includes score, note, image. #Requires User Authenication
-  #delete /moods/:id #Requires User Authenication.  Must own mood
-
-
-
-  #patch '/moods/:id' #Updates an existing mood.  Must own mood
 
   #TODO - Endpoint to set/save 'user' active categories.
   #get  '/mood_categories/active' #Gets active mood_categories of the currently authenicated user. - Requires authenication.
