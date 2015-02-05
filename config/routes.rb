@@ -13,11 +13,23 @@ Rails.application.routes.draw do
   get   '/password/reset', to: 'password_reset#show', as: :password_reset
   post  '/password/reset', to: 'password_reset#create'
   get   '/email/confirm/:token', to: 'email_confirmation#show', as: :confirm
-  
+ 
+
+  namespace :api do
+    namespace :v1 do
+      post "signup", to: "signup#create"
+      get "me", to: "users#me"
+    end
+  end
+
+
   #resource 'moods'
 
   #post '/moods' #Adds a new mood for the currently authenicated user.  Includes score, note, image. #Requires User Authenication
   #delete /moods/:id #Requires User Authenication.  Must own mood
+
+
+
   #patch '/moods/:id' #Updates an existing mood.  Must own mood
 
   #TODO - Endpoint to set/save 'user' active categories.
