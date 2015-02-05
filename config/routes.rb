@@ -14,5 +14,17 @@ Rails.application.routes.draw do
   post  '/password/reset', to: 'password_reset#create'
   get   '/email/confirm/:token', to: 'email_confirmation#show', as: :confirm
   
+  #resource 'moods'
+
+  #post '/moods' #Adds a new mood for the currently authenicated user.  Includes score, note, image. #Requires User Authenication
+  #delete /moods/:id #Requires User Authenication.  Must own mood
+  #patch '/moods/:id' #Updates an existing mood.  Must own mood
+
+  #TODO - Endpoint to set/save 'user' active categories.
+  #get  '/mood_categories/active' #Gets active mood_categories of the currently authenicated user. - Requires authenication.
+  #post '/mood_categories/:name' #Gets an individual mood category by name 
+  #get  '/mood_categories/base' #Gets 'base categories' - No User authenication
+  #get  '/mood_categories' #Gets all mood categories - No User authenication
+
   root 'welcome#index'
 end

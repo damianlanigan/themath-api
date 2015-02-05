@@ -196,3 +196,43 @@ class User < ActiveRecord::Base
     errors.add(:confirmation_email, :taken, value: email) if User.where('email = ?', confirmation_email).count > 0
   end
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                              :integer          not null, primary key
+#  created_at                      :datetime
+#  updated_at                      :datetime
+#  email                           :string           default(""), not null
+#  password_digest                 :string           default(""), not null
+#  username                        :string(64)
+#  time_zone                       :string           default("Eastern Time (US & Canada)")
+#  first_name                      :string
+#  last_name                       :string
+#  bio                             :text
+#  website                         :string
+#  phone_number                    :string
+#  otp_secret_key                  :string
+#  sign_in_count                   :integer          default("0")
+#  current_sign_in_at              :datetime
+#  last_sign_in_at                 :datetime
+#  current_sign_in_ip              :string
+#  last_sign_in_ip                 :string
+#  original_source                 :string
+#  session_source                  :string
+#  first_visit_at                  :datetime
+#  last_visit_at                   :datetime
+#  reset_password_token            :string
+#  reset_password_token_created_at :datetime
+#  remember_token                  :string
+#  remember_token_created_at       :datetime
+#  confirmation_email              :string
+#  confirmation_token              :string
+#  confirmation_token_created_at   :string
+#  failed_attempts                 :integer          default("0")
+#  locked_at                       :datetime
+#  unlock_token                    :string
+#  unlock_token_created_at         :datetime
+#  suspended_at                    :datetime
+#
