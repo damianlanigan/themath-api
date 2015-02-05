@@ -4,11 +4,18 @@ Doorkeeper.configure do
   # :mongoid4, :mongo_mapper
   orm :active_record
 
+  # Support credential based logins
+  resource_owner_from_credentials do |routes|
+    email = "#{params[:email]}".downcase
+    return if email.blank?
+    user = User.where('email = ?', email).first
+    user if user && user.authenticate(params[:password])
+  end
+
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
     return @current_user if defined?(@current_user)
     @current_user ||= User.where(id: session[:user_id]).first if session[:user_id]
-    # probably 403 instead of redirect
     redirect_to(login_path) unless @current_user
   end
 
@@ -86,7 +93,7 @@ Doorkeeper.configure do
   #   http://tools.ietf.org/html/rfc6819#section-4.4.2
   #   http://tools.ietf.org/html/rfc6819#section-4.4.3
   #
-  grant_flows %w(password)
+  grant_flows %w(authorization_code client_credentials password implicit)
 
   # Under some circumstances you might want to have applications auto-approved,
   # so that the user skips the authorization step.
