@@ -8,10 +8,8 @@ Doorkeeper.configure do
   resource_owner_authenticator do
     return @current_user if defined?(@current_user)
     @current_user ||= User.where(id: session[:user_id]).first if session[:user_id]
-    redirect_to(login_path) unless @current_user  
-    # Put your resource owner authentication logic here.
-    # Example implementation:
-    #   User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
+    # probably 403 instead of redirect
+    redirect_to(login_path) unless @current_user
   end
 
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
