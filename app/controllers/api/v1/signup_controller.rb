@@ -1,4 +1,4 @@
-module Api
+  module Api
   module V1
     class SignupController < ApiController
 
@@ -29,11 +29,7 @@ module Api
       def signup_params
         params.require(:signup).permit(
           :email,
-          :password,
-          :first_name,
-          :last_name,
-          :phone_number,
-          :time_zone)
+          :password)
       end
 
     end
