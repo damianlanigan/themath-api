@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Doorkeeper::Application.where(
+  name: 'HowAmIDoing',
+  redirect_uri: 'https://api.HowAmIDoing.com',
+  uid: ENV['DOORKEEPER_APP_UID'],
+  secret: ENV['DOORKEEPER_APP_SECRET']
+).first_or_create
