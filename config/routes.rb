@@ -20,28 +20,20 @@ Rails.application.routes.draw do
       post "signup", to: "signup#create"
       get "me", to: "users#me"
 
+      get  '/journal_categories/list', to: "journal_categories#list" 
+      get  '/journal_categories/core', to: "journal_categories#core"
+      
+      #get  '/journal_categories/active' #Gets active mood_categories of the currently authenicated user. - Requires authenication.
+      #get '/journal_categories/:name' #Gets an individual mood category by name 
+      #todo - endpoint to set journal_category active for particular user
 
       #post '/moods' #Adds a new mood for the currently authenicated user.  Includes score, note, image. #Requires User Authenication
       #delete /moods/:id #Requires User Authenication.  Must own mood
       #patch '/moods/:id' #Updates an existing mood.  Must own mood
 
-      #TODO - Endpoint to set/save 'user' active categories.
-      #get  '/journal_categories/active' #Gets active mood_categories of the currently authenicated user. - Requires authenication.
-      #post '/journal_categories/:name' #Gets an individual mood category by name 
-      #get  '/journal_categories/base' #Gets 'base categories' - No User authenication
-      #get  '/journal_categories' #Gets all mood categories - No User authenication
-
     end
   end
 
-
-  #resource 'moods'
-
-  #TODO - Endpoint to set/save 'user' active categories.
-  #get  '/mood_categories/active' #Gets active mood_categories of the currently authenicated user. - Requires authenication.
-  #post '/mood_categories/:name' #Gets an individual mood category by name 
-  #get  '/mood_categories/base' #Gets 'base categories' - No User authenication
-  #get  '/mood_categories' #Gets all mood categories - No User authenication
 
   root 'welcome#index'
 end
