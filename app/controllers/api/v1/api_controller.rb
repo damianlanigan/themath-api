@@ -6,6 +6,7 @@ module Api
 
       protected
       # Protected methods
+
     end
   end
 end
