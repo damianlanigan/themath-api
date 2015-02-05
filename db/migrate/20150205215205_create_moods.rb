@@ -3,8 +3,6 @@ class CreateMoods < ActiveRecord::Migration
     create_table :moods do |t|
       t.references :user, index: true
       t.integer :score
-      t.text :note
-      t.string :image
 
       t.timestamps null: false
     end

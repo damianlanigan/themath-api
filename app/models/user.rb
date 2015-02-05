@@ -4,10 +4,10 @@ require 'username_format_validator'
 
 class User < ActiveRecord::Base
   
-
   has_many :moods
-  has_many :user_mood_categories
-  has_many :mood_categories, through: :user_mood_categories
+  has_many :journal_entries
+  has_many :user_journal_category
+  has_many :journal_categories, through: :user_journal_category
 
   has_secure_password validations: false
   has_one_time_password
