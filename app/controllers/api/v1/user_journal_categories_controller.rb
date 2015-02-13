@@ -14,10 +14,13 @@ module Api
 					new_journal_category = UserJournalCategory.where(user_id: current_resource_owner.id, journal_category_id: journal_category_id).first_or_create
 					user_journal_categories.push(new_journal_category)
 				end
-			
-				#Update all to active case of existing entries
+		
+				#Update all to active case of existing entries to active.
 				user_journal_category_ids = user_journal_categories.map { |ujc| ujc.id }
 				UserJournalCategory.where(id: user_journal_category_ids).update_all(active: true)
+
+				#Set any not included to false if they do not exist.
+				UserJournalCategory.where.not( id: user_journal_category_ids ).update_all( active: false)
 
 				render json: user_active_journals 
 			end
