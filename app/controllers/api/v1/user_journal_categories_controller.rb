@@ -22,13 +22,13 @@ module Api
 				#Set any not included to false if they do not exist.
 				UserJournalCategory.where.not( id: user_journal_category_ids ).update_all( active: false)
 
-				render json: user_active_journals 
+				render json: { active_journal_categories: user_active_journals }
 			end
 
 
 			def index
 				current_user = current_resource_owner
-				render json: { active_journals: user_active_journals} 
+				render json: { active_journals_categories: user_active_journals} 
 			end
 			
 			protected
