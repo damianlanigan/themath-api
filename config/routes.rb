@@ -20,13 +20,13 @@ Rails.application.routes.draw do
       post "signup", to: "signup#create"
       get "me", to: "users#me"
 
-      get  '/journal_categories/list', to: "journal_categories#list" 
+      get  '/journal_categories', to: "journal_categories#index" 
       get  '/journal_categories/core', to: "journal_categories#core"
-      
-      #get  '/journal_categories/active' #Gets active mood_categories of the currently authenicated user. - Requires authenication.
-      #get '/journal_categories/:name' #Gets an individual mood category by name 
-      #todo - endpoint to set journal_category active for particular user
 
+      put  '/users/self/journal_categories', to: "user_journal_categories#update"
+      get  '/users/self/journal_categories', to: 'user_journal_categories#index'
+
+      #get  '/journal_categories/active' #Gets active mood_categories of the currently authenicated user. - Requires authenication.
       #post '/moods' #Adds a new mood for the currently authenicated user.  Includes score, note, image. #Requires User Authenication
       #delete /moods/:id #Requires User Authenication.  Must own mood
       #patch '/moods/:id' #Updates an existing mood.  Must own mood

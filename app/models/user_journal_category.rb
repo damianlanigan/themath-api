@@ -1,6 +1,6 @@
 class UserJournalCategory < ActiveRecord::Base
   belongs_to :user
-  belongs_to :category
+  belongs_to :journal_category
 end
 
 # == Schema Information
