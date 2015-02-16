@@ -35,14 +35,14 @@ describe Signup do
 
     describe "when valid" do
       it "should persist" do
-        signup.user = build(:user)
+        signup.user = FactoryGirl.build(:user)
         expect(signup).to receive(:valid?).and_return(true)
         expect(signup.user).to receive(:save!)
         signup.save
       end
 
       it "should send the welcome" do
-        signup.user = build(:user)
+        signup.user = FactoryGirl.build(:user)
         signup.email = signup.user.email
         expect(signup).to receive(:valid?).and_return(true)
         allow(signup).to receive(:persist!)
@@ -51,7 +51,7 @@ describe Signup do
       end
 
       it "should send the confirmation" do
-        signup.user = build(:user)
+        signup.user = FactoryGirl.build(:user)
         signup.email = signup.user.email
         expect(signup).to receive(:valid?).and_return(true)
         allow(signup).to receive(:persist!)
@@ -82,7 +82,7 @@ describe Signup do
   end
 
   it "should create a new user" do
-    user = build(:user)
+    user = FactoryGirl.build(:user)
     expect(User).to receive(:new).and_return(user)
     allow(user).to receive(:valid?).and_return(true)
     expect(user).to receive(:save!)

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe User do
-  let(:user_params) { attributes_for(:user) }
+  let(:user_params) { FactoryGirl.attributes_for(:user) }
 
   it "has secure password support" do
     expect(User.new).to respond_to(:authenticate)
@@ -25,13 +25,13 @@ describe User do
   describe "validations" do
     describe "unique" do
       before(:each) do
-        create(:user)
+        FactoryGirl.create(:user)
       end
       it { should validate_uniqueness_of(:username) }
       it { should validate_uniqueness_of(:email) }
       it "validates the uniqueness of the the confirmation email" do
-        existing_user = create(:user)
-        user = build(:user, email: "old@example.com")
+        existing_user = FactoryGirl.create(:user)
+        user = FactoryGirl.build(:user, email: "old@example.com")
         user.confirmation_email = "new@example.com"
         expect(user).to be_valid
         user.confirmation_email = existing_user.email
@@ -143,7 +143,7 @@ describe User do
   end
 
   describe "emails" do
-    let(:user) { build(:user) }
+    let(:user) { FactoryGirl.build(:user) }
 
     describe "with valid params" do
       it "confirms the email" do
@@ -195,7 +195,7 @@ describe User do
     end
 
     it "does not confirm emails if they are already used" do
-      create(:user, email: "new@example.com")
+      FactoryGirl.create(:user, email: "new@example.com")
       user.confirmation_email = "new@example.com"
       user.confirmation_token = "TOKEN"
       expect(user.email_confirmed).to eq(false)
@@ -203,19 +203,19 @@ describe User do
     end
 
     it "is pending confirmation if there is a confirmation token" do
-      user = build(:user, confirmation_token: "TOKEN")
+      user = FactoryGirl.build(:user, confirmation_token: "TOKEN")
       expect(user).to be_pending_confirmation
     end
 
     it "there is no pending confirmation if there is not a confirmation token" do
-      user = build(:user, confirmation_token: nil)
+      user = FactoryGirl.build(:user, confirmation_token: nil)
       expect(user).to_not be_pending_confirmation
     end
   end
 
   describe "passwords" do
     it "changes the password if it matches" do
-      user = build(:user)
+      user = FactoryGirl.build(:user)
       expect(user).to receive(:save).and_return(true)
       user.change_password("password", "password")
       expect(user.password_digest).to_not be_blank

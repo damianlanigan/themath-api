@@ -3,7 +3,7 @@ require 'rails_helper'
 describe SignupController do
   render_views
 
-  let(:signup_params) { attributes_for(:user) }
+  let(:signup_params) { FactoryGirl.attributes_for(:user) }
   let(:invalid_params) { signup_params.merge(password: 'newpassword', password_confirmation: 'wrongpassword') }
 
   describe "GET 'new'" do

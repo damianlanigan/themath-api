@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ApplicationController do
-  let(:user) { create(:user) }
+  let(:user) { FactoryGirl.create(:user) }
   let(:logged_in_session) { { user_id: user.id } }
   let(:unknown_session) { { user_id: user.id + 1000000 } }
 

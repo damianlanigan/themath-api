@@ -3,8 +3,8 @@ require 'rails_helper'
 describe UsersController do
   render_views
 
-  let(:user) { create(:user) }
-  let(:user_params) { attributes_for(:user) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:user_params) { FactoryGirl.attributes_for(:user) }
   let(:invalid_params) { user_params.merge(password: 'newpassword', password_confirmation: 'wrongpassword') }
   let(:logged_in_session) { { user_id: user.id } }
 

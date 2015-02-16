@@ -3,7 +3,7 @@ require 'rails_helper'
 describe EmailConfirmationController do
   render_views
 
-  let(:user) { build(:user) }
+  let(:user) { FactoryGirl.build(:user) }
   let(:token) { "TOKEN" }
 
   describe "GET 'show'" do

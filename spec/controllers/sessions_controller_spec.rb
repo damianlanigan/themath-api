@@ -3,7 +3,7 @@ require 'rails_helper'
 describe SessionsController do
   render_views
 
-  let(:user) { create(:user) }
+  let(:user) { FactoryGirl.create(:user) }
   let(:logged_in_session) { { user_id: user.id } }
 
   describe "GET 'new'" do

@@ -4,7 +4,7 @@ describe PasswordChangeController do
   render_views
 
   let(:token) { "TOKEN" }
-  let(:user) { build(:user, reset_password_token: token, reset_password_token_created_at: Time.now) }
+  let(:user) { FactoryGirl.build(:user, reset_password_token: token, reset_password_token_created_at: Time.now) }
   let(:valid_params) { {token: token, email: user.email} }
   let(:password_params) { valid_params.merge(password: 'newpassword', password_confirmation: 'newpassword') }
 

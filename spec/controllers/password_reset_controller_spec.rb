@@ -3,7 +3,7 @@ require 'rails_helper'
 describe PasswordResetController do
   render_views
 
-  let(:user) { create(:user) }
+  let(:user) { FactoryGirl.create(:user) }
 
   describe "GET 'show'" do
     it "returns http success" do
