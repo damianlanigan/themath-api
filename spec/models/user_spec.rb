@@ -149,10 +149,10 @@ describe User do
       it "confirms the email" do
         user = User.new
         expect(user).to receive(:save!).and_return(true)
-        allow(Time).to receive(:now).and_return(time = Time.now)
+        allow(Time).to receive(:now).and_return(time = Time.now.to_i)
 
         user.send_confirmation
-        expect(user.confirmation_token_created_at).to eq(time)
+        expect(user.confirmation_token_created_at.to_i).to eq(time)
         expect(user.confirmation_token).to_not be_blank
       end
 
@@ -256,43 +256,3 @@ describe User do
     end
   end
 end
-
-# == Schema Information
-#
-# Table name: users
-#
-#  id                              :integer          not null, primary key
-#  created_at                      :datetime
-#  updated_at                      :datetime
-#  email                           :string           default(""), not null
-#  password_digest                 :string           default(""), not null
-#  username                        :string(64)
-#  time_zone                       :string           default("Eastern Time (US & Canada)")
-#  first_name                      :string
-#  last_name                       :string
-#  bio                             :text
-#  website                         :string
-#  phone_number                    :string
-#  otp_secret_key                  :string
-#  sign_in_count                   :integer          default("0")
-#  current_sign_in_at              :datetime
-#  last_sign_in_at                 :datetime
-#  current_sign_in_ip              :string
-#  last_sign_in_ip                 :string
-#  original_source                 :string
-#  session_source                  :string
-#  first_visit_at                  :datetime
-#  last_visit_at                   :datetime
-#  reset_password_token            :string
-#  reset_password_token_created_at :datetime
-#  remember_token                  :string
-#  remember_token_created_at       :datetime
-#  confirmation_email              :string
-#  confirmation_token              :string
-#  confirmation_token_created_at   :string
-#  failed_attempts                 :integer          default("0")
-#  locked_at                       :datetime
-#  unlock_token                    :string
-#  unlock_token_created_at         :datetime
-#  suspended_at                    :datetime
-#
