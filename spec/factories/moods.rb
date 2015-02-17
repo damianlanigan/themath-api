@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :mood do
-    user nil
-score 1
+    user_id "1"
+    score 999
   end
-
 end
 
 # == Schema Information

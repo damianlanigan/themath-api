@@ -1,8 +1,10 @@
 FactoryGirl.define do
   factory :journal_entry do
+    user_id 1
+    journal_category_id 1
     score 1
-note "MyText"
-image "MyString"
+    note "MyText"
+    image "MyString"
   end
 
 end

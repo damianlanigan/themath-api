@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe JournalCategory, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:journal_category) { FactoryGirl.build :journal_category }
+  subject { journal_category }
+
+  
+  it { should have_many(:users).through(:user_journal_categories) }
+
 end
 
 # == Schema Information
