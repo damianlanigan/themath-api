@@ -3,7 +3,7 @@ require 'full_name_splitter'
 require 'username_format_validator'
 
 class User < ActiveRecord::Base
-  
+
   has_many :moods
   has_many :journal_entries
   has_many :user_journal_category
@@ -18,13 +18,13 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, length: { minimum: 6 }, if: :has_password?
   validates :email, email_format: true, uniqueness: { allow_nil: true }
   validates :confirmation_email, email_format: true
-  validates :username, username_format: true, uniqueness: { case_sensitive: false, allow_nil: true }
-  
+  # validates :username, username_format: true, uniqueness: { case_sensitive: false, allow_nil: true }
+
   validates :password, presence: true, unless: :has_auth_or_skip_password_validation?
   validates :email, presence: true, unless: :has_auth?
-  validates :confirmation_email, presence: true, unless: :has_auth?
-  validates :username, presence: true, unless: :has_auth?
-  
+  # validates :confirmation_email, presence: true, unless: :has_auth?
+  # validates :username, presence: true, unless: :has_auth?
+
   # Confirm emails check for existing emails for uniqueness as a convenience
   validate  :confirmation_email_uniqueness, if: :confirmation_email_set?
 
@@ -156,9 +156,7 @@ class User < ActiveRecord::Base
   protected
 
   def has_auth?
-    
     false
-    
   end
 
   def has_auth_or_skip_password_validation?

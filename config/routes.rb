@@ -13,14 +13,14 @@ Rails.application.routes.draw do
   get   '/password/reset', to: 'password_reset#show', as: :password_reset
   post  '/password/reset', to: 'password_reset#create'
   get   '/email/confirm/:token', to: 'email_confirmation#show', as: :confirm
- 
+
 
   namespace :api do
     namespace :v1 do
       post "signup", to: "signup#create"
       get "me", to: "users#me"
 
-      get  'journal_categories', to: "journal_categories#index" 
+      get  'journal_categories', to: "journal_categories#index"
       get  'journal_categories/core', to: "journal_categories#core"
 
       scope '/users' do
