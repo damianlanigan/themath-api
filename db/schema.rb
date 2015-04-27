@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427152715) do
+ActiveRecord::Schema.define(version: 20150427195216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 20150427152715) do
   end
 
   add_index "journal_entries", ["user_id"], name: "index_journal_entries_on_user_id", using: :btree
+
+  create_table "journal_entries_categories", id: false, force: :cascade do |t|
+    t.integer  "journal_entry_id"
+    t.integer  "journal_category_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "id"
+  end
+
+  add_index "journal_entries_categories", ["id"], name: "index_journal_entries_categories_on_id", unique: true, using: :btree
+  add_index "journal_entries_categories", ["journal_category_id", "journal_entry_id"], name: "entry_category", unique: true, using: :btree
+  add_index "journal_entries_categories", ["journal_category_id"], name: "index_journal_entries_categories_on_journal_category_id", using: :btree
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
