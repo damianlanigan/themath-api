@@ -14,9 +14,6 @@ end
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  core       :boolean
-#  icon       :string
-#  color      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
