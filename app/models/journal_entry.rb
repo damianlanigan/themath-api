@@ -1,6 +1,5 @@
 class JournalEntry < ActiveRecord::Base
 	belongs_to :user
-  belongs_to :journal_category
 
   validates :user_id, presence: true
   validates :score, presence: true

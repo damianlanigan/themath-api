@@ -11,11 +11,6 @@ module Api
         render json: response
       end
 
-      def core
-        response = { journal_categories: JournalCategory.where(core:true) }
-        render json: response
-      end
-
     end
 
   end

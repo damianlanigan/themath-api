@@ -25,7 +25,11 @@ Rails.application.routes.draw do
       scope '/users' do
         scope 'self/' do
 
-          #TODO post/get/delete/patch/put journal_entries
+          post 'journal_entry', to: 'journal_entries#create'
+          #get  'journal_entries/:id', to: 'journal_entries#show'
+          #delete 'journal_entries/:id', to: 'journal_entries#destroy'
+          #patch 'journal_entries/:id', to: 'journal_entries#update'
+          #put   'journal_entries/:id', to: 'journal_entries#update'
 
         end
       end
