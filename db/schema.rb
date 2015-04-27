@@ -11,16 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427140703) do
+ActiveRecord::Schema.define(version: 20150427144840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "journal_categories", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "core"
-    t.string   "icon"
-    t.string   "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,17 +75,6 @@ ActiveRecord::Schema.define(version: 20150427140703) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
-  create_table "user_journal_categories", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "journal_category_id"
-    t.boolean  "active"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
-
-  add_index "user_journal_categories", ["journal_category_id"], name: "index_user_journal_categories_on_journal_category_id", using: :btree
-  add_index "user_journal_categories", ["user_id"], name: "index_user_journal_categories_on_user_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -134,6 +120,4 @@ ActiveRecord::Schema.define(version: 20150427140703) do
 
   add_foreign_key "journal_entries", "journal_categories"
   add_foreign_key "journal_entries", "users"
-  add_foreign_key "user_journal_categories", "journal_categories"
-  add_foreign_key "user_journal_categories", "users"
 end

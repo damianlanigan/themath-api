@@ -21,13 +21,9 @@ Rails.application.routes.draw do
       get "me", to: "users#me"
 
       get  'journal_categories', to: "journal_categories#index"
-      get  'journal_categories/core', to: "journal_categories#core"
 
       scope '/users' do
         scope 'self/' do
-
-          put  'journal_categories', to: "user_journal_categories#update"
-          get  'journal_categories', to: 'user_journal_categories#index'
 
           #TODO post/get/delete/patch/put journal_entries
 

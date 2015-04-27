@@ -1,7 +1,4 @@
 class JournalCategory < ActiveRecord::Base
-	has_many :user_journal_categories
-  has_many :users, through: :user_journal_categories
-
 end
 
 # == Schema Information

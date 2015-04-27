@@ -5,7 +5,6 @@ RSpec.describe JournalCategory, :type => :model do
   subject { journal_category }
 
   
-  it { should have_many(:users).through(:user_journal_categories) }
 
 end
 
