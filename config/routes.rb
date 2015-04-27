@@ -29,11 +29,7 @@ Rails.application.routes.draw do
           put  'journal_categories', to: "user_journal_categories#update"
           get  'journal_categories', to: 'user_journal_categories#index'
 
-          post 'mood', to: 'moods#create'
-          get  'moods/:id', to: 'moods#show'
-          delete 'moods/:id', to: 'moods#destroy'
-          patch 'moods/:id', to: 'moods#update'
-          put   'moods/:id', to: 'moods#update'
+          #TODO post/get/delete/patch/put journal_entries
 
         end
       end

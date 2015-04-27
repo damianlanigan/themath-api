@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205220712) do
+ActiveRecord::Schema.define(version: 20150427140703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,15 +37,6 @@ ActiveRecord::Schema.define(version: 20150205220712) do
 
   add_index "journal_entries", ["journal_category_id"], name: "index_journal_entries_on_journal_category_id", using: :btree
   add_index "journal_entries", ["user_id"], name: "index_journal_entries_on_user_id", using: :btree
-
-  create_table "moods", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "moods", ["user_id"], name: "index_moods_on_user_id", using: :btree
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -143,7 +134,6 @@ ActiveRecord::Schema.define(version: 20150205220712) do
 
   add_foreign_key "journal_entries", "journal_categories"
   add_foreign_key "journal_entries", "users"
-  add_foreign_key "moods", "users"
   add_foreign_key "user_journal_categories", "journal_categories"
   add_foreign_key "user_journal_categories", "users"
 end
