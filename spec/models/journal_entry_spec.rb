@@ -23,6 +23,7 @@ end
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer
-#  location   :point
 #  timestamp  :datetime
+#  lat        :decimal(10, 6)
+#  lng        :decimal(10, 6)
 #

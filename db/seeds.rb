@@ -14,32 +14,26 @@ Doorkeeper::Application.where(
 ).first_or_create
 
 #Seed 'core' categories
-journal_category = JournalCategory.find_or_initialize_by(name: 'self')
-journal_category.name = 'self'
-journal_category.core = true;
-journal_category.save!
-
-journal_category = JournalCategory.find_or_initialize_by(name: 'lifestyle')
-journal_category.name = 'lifestyle'
-journal_category.core = true;
+journal_category = JournalCategory.find_or_initialize_by(name: 'love')
 journal_category.save!
 
 journal_category = JournalCategory.find_or_initialize_by(name: 'money')
-journal_category.name = 'money'
-journal_category.core = true;
 journal_category.save!
 
-journal_category = JournalCategory.find_or_initialize_by(name: 'health')
-journal_category.name = 'health'
-journal_category.core = true;
+journal_category = JournalCategory.find_or_initialize_by(name: 'social')
 journal_category.save!
 
 journal_category = JournalCategory.find_or_initialize_by(name: 'work')
-journal_category.name = 'work'
-journal_category.core = true;
 journal_category.save!
 
-journal_category = JournalCategory.find_or_initialize_by(name: 'live')
-journal_category.name = 'live'
-journal_category.core = true;
+journal_category = JournalCategory.find_or_initialize_by(name: 'home')
+journal_category.save!
+
+journal_category = JournalCategory.find_or_initialize_by(name: 'health')
+journal_category.save!
+
+journal_category = JournalCategory.find_or_initialize_by(name: 'self')
+journal_category.save!
+
+journal_category = JournalCategory.find_or_initialize_by(name: 'chaotic')
 journal_category.save!
