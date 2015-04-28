@@ -11,7 +11,7 @@ module Api
         journal_entry = current_resource_owner.journal_entries.new(journal_entry_params(params[:journal_entry]))
 
         if journal_entry.valid? && journal_entry.save
-          render json: { journal_entry: journal_entry }
+          render json: journal_entry
         else
           render json: { errors: journal_entry.errors }, status: 422
         end
@@ -19,6 +19,12 @@ module Api
       end
 
       def show
+        render json: current_resource_owner.journal_entries.find(params[:id])
+      end
+
+      def destroy
+        current_resource_owner.journal_entries.find(params[:id]).destroy
+        head 204
       end
 
       protected
