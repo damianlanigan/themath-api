@@ -11,12 +11,14 @@ module Api
         journal_entry = current_resource_owner.journal_entries.new(journal_entry_params(params[:journal_entry]))
 
         if journal_entry.valid? && journal_entry.save
-          journal_entry.categories 
           render json: { journal_entry: journal_entry }
         else
           render json: { errors: journal_entry.errors }, status: 422
         end
 
+      end
+
+      def show
       end
 
       protected
