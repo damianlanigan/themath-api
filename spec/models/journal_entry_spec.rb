@@ -5,12 +5,13 @@ RSpec.describe JournalEntry, :type => :model do
   subject { journal_entry }
 
   it { should belong_to :user }
-  it { should belong_to :journal_category }
+  it { should have_many :journal_categories }
 
   it { should validate_presence_of(:user_id) }
   it { should validate_presence_of(:score) }
   it { should validate_numericality_of(:score).only_integer.is_less_than_or_equal_to(100).is_greater_than_or_equal_to(0) }
 
+  pending "add some examples to (or delete) #{__FILE__}"
 end
 
 # == Schema Information

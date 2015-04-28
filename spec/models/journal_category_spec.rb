@@ -4,7 +4,7 @@ RSpec.describe JournalCategory, :type => :model do
   let(:journal_category) { FactoryGirl.build :journal_category }
   subject { journal_category }
 
-  
+  pending "add some examples to (or delete) #{__FILE__}"
 
 end
 

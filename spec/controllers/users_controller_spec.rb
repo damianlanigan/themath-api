@@ -32,23 +32,7 @@ describe UsersController do
           allow(controller).to receive(:current_user).and_return(user)
         end
 
-        it "doesn't send the confirmation the email if unchanged" do
-          user.email = user.confirmation_email
-          user.confirmation_email = nil
-          expect(user).to_not receive(:send_confirmation)
-          put :update, {user: user_params.merge(confirmation_email: user.email)}, logged_in_session
-        end
 
-        it "doesn't reconfirm if the confirmation email is unchanged" do
-          expect(user).to_not receive(:send_confirmation)
-          put :update, {user: user_params.merge(confirmation_email: user.email)}, logged_in_session
-        end
-
-        it "confirms the confirmation email" do
-          user.email = "old@example.com"
-          expect(user).to receive(:send_confirmation).and_return(true)
-          put :update, {user: user_params.merge(confirmation_email: "new@example.com")}, logged_in_session
-        end
       end
 
       describe "from html" do

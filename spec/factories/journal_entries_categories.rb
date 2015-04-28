@@ -12,7 +12,7 @@
 FactoryGirl.define do
   factory :journal_entries_category do
     journal_entry_id 1
-journal_category_id 1
+    journal_category_id 1
   end
 
 end
