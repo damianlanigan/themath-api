@@ -1,18 +1,18 @@
 class JournalEntry < ActiveRecord::Base
 	belongs_to :user
 
-  has_many :journal_entries_categories, dependent: :destroy 
+  has_many :journal_entries_categories, dependent: :destroy
   has_many :journal_categories, through: :journal_entries_categories
 
   validates :user_id, presence: true
   validates :score, presence: true
   validates :score, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
-  validates :categories, presence: true
+  # validates :categories, presence: true
 
   after_initialize :init
 
   def init
-    self.note  ||= ""          
+    self.note  ||= ""
     self.timestamp ||= Time.now
   end
 
