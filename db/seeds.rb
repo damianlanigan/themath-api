@@ -35,5 +35,5 @@ journal_category.save!
 journal_category = JournalCategory.find_or_initialize_by(name: 'self')
 journal_category.save!
 
-journal_category = JournalCategory.find_or_initialize_by(name: 'chaotic')
+journal_category = JournalCategory.find_or_initialize_by(name: 'productivity')
 journal_category.save!
