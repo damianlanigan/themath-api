@@ -27,6 +27,7 @@ gem 'active_model_otp'
 gem 'responders'
 gem 'bcrypt'
 gem 'doorkeeper'
+gem 'attr_encrypted'
 
 group :test, :development do
   gem 'dotenv-rails'

@@ -30,7 +30,6 @@ module Api
           :email,
           :password)
       end
-
     end
   end
 end

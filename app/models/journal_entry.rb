@@ -1,4 +1,5 @@
 class JournalEntry < ActiveRecord::Base
+  include Encryption
 	belongs_to :user
 
   has_many :journal_entries_categories, dependent: :destroy
@@ -7,6 +8,8 @@ class JournalEntry < ActiveRecord::Base
   validates :user_id, presence: true
   validates :score, presence: true
   validates :score, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
+
+  attr_encrypted :note, :key => :data_encryption_key, :mode => :per_attribute_iv_and_salt
 
   after_initialize :init
 
@@ -17,7 +20,11 @@ class JournalEntry < ActiveRecord::Base
 
   def as_json(options = { })
       to_json = super(options)
-      to_json[:categories]  = categories
+      to_json.delete('encrypted_note')
+      to_json.delete('encrypted_note_salt')
+      to_json.delete('encrypted_note_iv')
+      to_json[:note] = note
+      to_json[:categories] = categories
       to_json
   end
 

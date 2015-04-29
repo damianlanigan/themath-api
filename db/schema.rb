@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428021113) do
+ActiveRecord::Schema.define(version: 20150429205704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,13 +24,15 @@ ActiveRecord::Schema.define(version: 20150428021113) do
 
   create_table "journal_entries", force: :cascade do |t|
     t.integer  "score"
-    t.text     "note"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.text     "encrypted_note"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.integer  "user_id"
     t.datetime "timestamp"
-    t.decimal  "lat",        precision: 10, scale: 6
-    t.decimal  "lng",        precision: 10, scale: 6
+    t.decimal  "lat",                 precision: 10, scale: 6
+    t.decimal  "lng",                 precision: 10, scale: 6
+    t.string   "encrypted_note_salt"
+    t.string   "encrypted_note_iv"
   end
 
   add_index "journal_entries", ["user_id"], name: "index_journal_entries_on_user_id", using: :btree
