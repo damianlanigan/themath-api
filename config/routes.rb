@@ -32,6 +32,8 @@ Rails.application.routes.draw do
           patch 'journal_entries/:id', to: 'journal_entries#update'
           put   'journal_entries/:id', to: 'journal_entries#update'
 
+          get   'reports/average_score_by_date', to: 'reports#average_score_by_date'
+
         end
       end
 
