@@ -34,6 +34,17 @@ module Api
         render json: current_resource_owner.journal_entries.find(params[:id])
       end
 
+      def index
+
+        je_query = current_resource_owner.journal_entries.joins(:journal_categories)
+        je_query = je_query.where( "timestamp >= ? ", params[:start_datetime] ) unless params[:start_datetime].blank?
+        je_query = je_query.where( "timestamp <= ? ", params[:end_datetime] ) unless params[:end_datetime].blank?
+        je_query = je_query.where( "journal_categories.name IN (?)", params[:categories] ) unless params[:categories].blank?
+
+        render json: je_query
+        
+      end
+
       def destroy
         current_resource_owner.journal_entries.find(params[:id]).destroy
         head 204
