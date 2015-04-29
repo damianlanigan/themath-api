@@ -7,7 +7,6 @@ class JournalEntry < ActiveRecord::Base
   validates :user_id, presence: true
   validates :score, presence: true
   validates :score, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
-  # validates :categories, presence: true
 
   after_initialize :init
 
@@ -31,8 +30,6 @@ class JournalEntry < ActiveRecord::Base
   def categories
     self.journal_categories.map(&:name)
   end
-
-
 end
 
 # == Schema Information

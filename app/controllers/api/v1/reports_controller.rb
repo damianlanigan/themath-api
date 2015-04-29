@@ -1,8 +1,6 @@
 module Api
   module V1
-
     class ReportsController < ApiController
-
       before_filter :require_oauth_application,:doorkeeper_authorize!
       respond_to :json
 
@@ -16,8 +14,6 @@ module Api
         #Maps average from BigDecimal to float since BigDecimal is serialized as a string when converted to json.
         render json: result.map { |k, avg| { k => avg.to_f } } 
       end
-
     end
-
   end
 end

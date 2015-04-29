@@ -1,8 +1,6 @@
 module Api
   module V1
-  
     class JournalCategoriesController < ApiController
-
       before_filter :require_oauth_application  
       respond_to    :json
 
@@ -10,8 +8,6 @@ module Api
         response = { journal_categories: JournalCategory.all }
         render json: response
       end
-
     end
-
   end
 end

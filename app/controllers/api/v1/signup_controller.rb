@@ -1,7 +1,6 @@
-  module Api
+module Api
   module V1
     class SignupController < ApiController
-
       before_filter :require_oauth_application, only: [:create]
 
       # POST /api/v1/signup

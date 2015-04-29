@@ -23,7 +23,6 @@ module Api
         return @oauth_application if defined?(@oauth_application)
         @oauth_application = Doorkeeper::Application.find_by_uid(application_id)
       end
-
     end
   end
 end
