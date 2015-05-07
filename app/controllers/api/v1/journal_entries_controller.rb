@@ -29,10 +29,9 @@ module Api
       end
 
       def index
-        je_query = current_resource_owner.journal_entries.joins(:journal_categories)
-        je_query = je_query.where( "timestamp >= ? ", params[:start_datetime] ) unless params[:start_datetime].blank?
+        current_resource_owner.journal_entries.eager_load(:journal_categories)
+        je_query = current_resource_owner.journal_entries.where( "timestamp >= ? ", params[:start_datetime] ) unless params[:start_datetime].blank?
         je_query = je_query.where( "timestamp <= ? ", params[:end_datetime] ) unless params[:end_datetime].blank?
-        je_query = je_query.where( "journal_categories.name IN (?)", params[:categories] ) unless params[:categories].blank?
 
         render json: je_query
       end
