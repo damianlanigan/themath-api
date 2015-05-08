@@ -5,9 +5,8 @@ module Api
       respond_to :json
 
       def average_score_by_date
-
         s = DateTime.parse(params[:start_date].to_date.to_s) + params[:timezone_offset].to_i.hours
-        e = DateTime.parse(params[:end_date].to_date.to_s) + params[:timezone_offset].to_i.hours
+        e = DateTime.parse(params[:end_date].to_date.to_s) + 1.days + params[:timezone_offset].to_i.hours
 
         current_resource_owner.journal_entries.eager_load(:journal_categories)
         je_report_query = current_resource_owner.journal_entries.where("timestamp >= ?", s) unless params[:start_date].blank?
