@@ -17,7 +17,7 @@ module Api
       def update
         journal_entry = current_resource_owner.journal_entries.find(params[:id])
 
-        if journal_entry.update(journal_entry_params(params[:journal_entry])) 
+        if journal_entry.update(journal_entry_params(params[:journal_entry]))
           render json: journal_entry
         else
           render json: { errors: journal_entry.errors }, status: 422
@@ -50,6 +50,7 @@ module Api
           :note,
           :lat,
           :lng,
+          :location_accuracy,
           :timestamp,
           categories: []
         )
