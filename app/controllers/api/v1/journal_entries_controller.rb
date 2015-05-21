@@ -51,6 +51,7 @@ module Api
           :lat,
           :lng,
           :location_accuracy,
+          :location_string,
           :timestamp,
           categories: []
         )

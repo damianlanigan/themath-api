@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429205704) do
+ActiveRecord::Schema.define(version: 20150521213339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20150429205704) do
     t.decimal  "lng",                 precision: 10, scale: 6
     t.string   "encrypted_note_salt"
     t.string   "encrypted_note_iv"
+    t.float    "location_accuracy"
+    t.string   "location_string"
   end
 
   add_index "journal_entries", ["user_id"], name: "index_journal_entries_on_user_id", using: :btree
