@@ -13,8 +13,6 @@ class JournalEntry < ActiveRecord::Base
 
   after_initialize :init
 
-
-
   def init
     self.note  ||= ""
     self.timestamp ||= Time.now
