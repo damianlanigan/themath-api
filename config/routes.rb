@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
           post 'journal_entry', to: 'journal_entries#create'
           get  'journal_entries', to: 'journal_entries#index'
+          get  'journal_entries/latest', to: 'journal_entries#latest'
           get  'journal_entries/:id', to: 'journal_entries#show'
           delete 'journal_entries/:id', to: 'journal_entries#destroy'
           patch 'journal_entries/:id', to: 'journal_entries#update'

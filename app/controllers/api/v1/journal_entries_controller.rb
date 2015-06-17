@@ -41,6 +41,10 @@ module Api
         head 204
       end
 
+      def latest
+        render json: current_resource_owner.journal_entries.last
+      end
+
       protected
 
       def journal_entry_params(hash)
