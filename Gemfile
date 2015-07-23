@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby "2.2.0"
+ruby "2.2.2"
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.3'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -17,8 +17,9 @@ group :development, :test do
 end
 
 group :development do
-    gem 'authkit'
-    gem 'annotate', ">=2.6.0"
+  gem 'authkit'
+  gem 'notifykit'
+  gem 'annotate', ">=2.6.0"
 end
 
 gem 'rails_12factor'
@@ -33,10 +34,4 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-end
-
-group :test, :development do
-end
-
-group :test, :development do
 end

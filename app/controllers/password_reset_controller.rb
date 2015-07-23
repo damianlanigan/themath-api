@@ -1,4 +1,6 @@
 class PasswordResetController < ApplicationController
+  skip_before_filter :verify_authenticity_token, only: [:create]
+
   def show
   end
 
@@ -28,10 +30,10 @@ class PasswordResetController < ApplicationController
 
   def user
     return @user if defined?(@user)
-    
+
     username_or_email = "#{params[:email]}".downcase
     return if username_or_email.blank?
     @user = User.where('LOWER(username) = ? OR email = ?', username_or_email, username_or_email).first
-    
+
   end
 end
