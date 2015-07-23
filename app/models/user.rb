@@ -43,6 +43,7 @@ require 'full_name_splitter'
 require 'username_format_validator'
 
 class User < ActiveRecord::Base
+has_many :notifications
 
   has_many :journal_entries
 
@@ -140,7 +141,15 @@ class User < ActiveRecord::Base
     self.reset_password_token_created_at = Time.now
     self.save!
 
-    # TODO: insert your mailer logic here
+    Notification.create!(
+      user: self,
+      subject: self,
+      kind: 'reset_password',
+      deliver_via_site: false,
+      email_from: Rails.application.secrets.email_from,
+      email_subject: "Password reset request"
+    ).deliver
+
     true
   end
 

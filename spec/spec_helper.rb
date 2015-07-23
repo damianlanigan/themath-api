@@ -82,4 +82,9 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  # FactoryGirl allows you to quickly create template based objects
+  # The syntax methods give you inline `create` and a `build` commands
+  config.include FactoryGirl::Syntax::Methods
+
 end
