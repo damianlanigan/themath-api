@@ -8,7 +8,7 @@ module NotificationsHelper
   end
 
   def notification_company_logo
-    "image should go here"
+    ""
   end
 
   def privacy_url
